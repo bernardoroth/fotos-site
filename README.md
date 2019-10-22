@@ -1,1 +1,1 @@
-# fotos-site
+# Website para o álbum de fotos.
