@@ -1,5 +1,5 @@
 import psycopg2 as psql
-import os, time, datetime, re, mimetypes, traceback, base64
+import traceback, base64
 
 conn = psql.connect("dbname=anuario user=postgres")
 c = conn.cursor()
@@ -21,11 +21,14 @@ def value_lists(data):
     return cols, vals
 
 def insert(data):
-    cols, vals = value_lists(data)
-    query f"INSERT INTO %s ({sput(cols)}) VALUES ({sput(vals)})"
-    values = tuple(cols + vals)
-    cur.execute(query, values)
-    pass
+    try:
+        cols, vals = value_lists(data)
+        query f"INSERT INTO %s ({sput(cols)}) VALUES ({sput(vals)})"
+        values = tuple(cols + vals)
+        cur.execute(query, values)
+        conn.commit()
+    except:
+        traceback.print_exception()
 
 cur.close()
 conn.close()
