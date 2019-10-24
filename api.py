@@ -7,13 +7,23 @@ c = conn.cursor()
 def create_user(username, email, password):
     pass
 
-def insert(data):
+def placeholders(list_of_items):
+    s = []
+    s += ["%s" for _ in list_of_items]
+    return ",".join(s)
+
+def value_lists(data):
     cols = []
     vals = []
     for cv in data.items():
         cols.append(cv[0])
         vals.append(cv[1])
-    query = "INSERT INTO %s () VALUES ()"
+    return cols, vals
+
+def insert(data):
+    cols, vals = value_lists(data)
+    query f"INSERT INTO %s ({sput(cols)}) VALUES ({sput(vals)})"
+    values = tuple(cols + vals)
     cur.execute(query, values)
     pass
 
