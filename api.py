@@ -4,6 +4,7 @@ import traceback, base64
 while password := input("Senha de 'postgres'> "):
     if password.replace(" ", "") != "":
         conn = psql.connect(f"dbname=anuario user=postgres password={password}")
+        del password
 c = conn.cursor()
 
 def create_user(username, email, password):
@@ -14,7 +15,7 @@ def placeholders(list_of_items):
     s += ["%s" for _ in list_of_items]
     return ",".join(s)
 
-def value_lists(data: dict) -> void:
+def value_lists(data: dict) -> None:
     table = data['table']
     data.pop('table')
     cols = []
