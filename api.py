@@ -7,5 +7,15 @@ c = conn.cursor()
 def create_user(username, email, password):
     pass
 
+def insert(data):
+    cols = []
+    vals = []
+    for cv in data.items():
+        cols.append(cv[0])
+        vals.append(cv[1])
+    query = "INSERT INTO %s () VALUES ()"
+    cur.execute(query, values)
+    pass
+
 cur.close()
 conn.close()
