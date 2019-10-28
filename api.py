@@ -58,14 +58,19 @@ def value_tuples(data: dict) -> tuple:
     for cv in data.items():
         cols.append(cv[0])
         vals.append(cv[1])
-    return tuple(cols), tuple(vals)
+    return table, tuple(cols), tuple(vals)
 
-def insert(data: dict) -> bool:
+def insert(data: dict, rest: str="") -> bool:
+    '''Functon that accepts a data dictionary and
+    inserts the values into a database, using the
+    "table" field as the table and the "rest" field
+    as an addition to the normal insert clause. '''
     try:
-        cols, vals = value_tuples(data)
-        value_tuples()
+        table, cols, vals = value_tuples(data)
         query = f"INSERT INTO %s ({sput(cols)}) VALUES ({sput(vals)})"
-        values = cols + vals
+        values = (table,) + cols + vals
+        if rest != "":
+            query += " " + rest
         cur.execute(query, values)
         conn.commit()
         return True
