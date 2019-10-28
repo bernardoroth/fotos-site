@@ -1,5 +1,8 @@
 import psycopg2 as psql
-import traceback, base64
+from hashlib import sha512
+from traceback import print_exc
+from base64 import b64encode
+from random import randint
 
 while True:
     password = input("Senha de 'postgres'> ")
@@ -10,8 +13,34 @@ while True:
         break
 c = conn.cursor()
 
-def create_user(username, email, password):
-    pass
+def hash_string(string):
+    for _ in range(50000):
+        string = sha512(string.encode()).hexdigest()
+    return string
+
+def latest_idn() -> int:
+    c.execute("SELECT curnum FROM id_origins ORDER BY curnum DESC")
+    last_num = c.fetchone()[0]
+    new_num = last_num + randint(1, 20)
+    return new_num
+
+def new_uid(limit: int) -> str:
+    new_num = latest_idn()
+    c.execute("INSERT INTO id_origins (curnum) VALUES %s", (new_num,))
+    hashed = hash_string(str(new_num))
+
+def create_user(username: str, email: str, password: str) -> bool:
+    uid = ""
+    try:
+        return insert({
+            "uid": new_uid()
+            "username": username,
+            "email": email,
+            "password", hash_password(password)
+        })
+    except:
+        print_exc();
+        return False
 
 def placeholders(items: list) -> str:
     s = []
@@ -31,7 +60,7 @@ def value_tuples(data: dict) -> tuple:
         vals.append(cv[1])
     return tuple(cols), tuple(vals)
 
-def insert(data):
+def insert(data: dict) -> bool:
     try:
         cols, vals = value_tuples(data)
         value_tuples()
@@ -39,8 +68,10 @@ def insert(data):
         values = cols + vals
         cur.execute(query, values)
         conn.commit()
+        return True
     except:
-        traceback.print_exception()
+        print_exc()
+        return False
 
 cur.close()
 conn.close()
