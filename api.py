@@ -9,8 +9,10 @@ while True:
     try:
         conn = psql.connect(f"dbname=anuario user=postgres password={password}")
         del password
-    except:
         break
+    except:
+        print_exc()
+        exit()
 c = conn.cursor()
 
 def hash_string(string):
@@ -33,24 +35,26 @@ def create_user(username: str, email: str, password: str) -> bool:
     uid = ""
     try:
         return insert({
-            "uid": new_uid()
+            "uid": new_uid(),
             "username": username,
             "email": email,
-            "password", hash_password(password)
+            "password": hash_password(password)
         })
     except:
         print_exc();
         return False
 
-def placeholders(items: list) -> str:
-    s = []
-    s += ["%s" for _ in items]
+def sput(items: tuple) -> str:
+    ''' Function that accepts a tuple and
+    turns it into a string of \%s's for
+    psycopg2 query formatting. '''
+    s = ["%s" for _ in items]
     return ",".join(s)
 
 def value_tuples(data: dict) -> tuple:
     ''' Function that accepts a dictionary
     of values and returns two tuples, one
-    for the keys and one for the values '''
+    for the keys and one for the values. '''
     table = data['table']
     data.pop('table')
     cols = []
@@ -78,5 +82,5 @@ def insert(data: dict, rest: str="") -> bool:
         print_exc()
         return False
 
-cur.close()
+c.close()
 conn.close()
