@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nova foto</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans Unicode', sans-serif;
+        }
+        input[type=text] {
+            padding: 5px;
+            width: 400px;
+        }
+        .separator {
+            height: 5px;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Adicionar nova foto</h2>
+    <form action="./api/new_picture" method="post" enctype="multipart/form-data">
+        <input type="text" name="asst_text" placeholder="Texto para a imagem (opcional)">
+        <br><div class="separator"></div>
+        <input type="file" name="pict">
+    </form>
+</body>
+</html>

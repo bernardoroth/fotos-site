@@ -33,16 +33,16 @@ def new_uid(limit: int) -> str:
     return hashed[:limit]
 
 def sput(items: tuple) -> str:
-    ''' Function that accepts a tuple and
+    """Function that accepts a tuple and
     turns it into a string of \%s's for
-    psycopg2 query formatting. '''
+    psycopg2 query formatting."""
     s = ["%s" for _ in items]
     return ",".join(s)
 
 def value_tuples(data: dict) -> tuple:
-    ''' Function that accepts a dictionary
+    """Function that accepts a dictionary
     of values and returns two tuples, one
-    for the keys and one for the values. '''
+    for the keys and one for the values."""
     table = data['table']
     data.pop('table')
     cols = []
@@ -60,7 +60,7 @@ def tuple_to_no_quote_str(tup: tuple) -> str:
      return str(tup).replace("'", "")
 
 def insert(data: dict, rest: str="") -> bool:
-    '''Function that accepts a data dictionary and
+    """Function that accepts a data dictionary and
     inserts the values into a database, using the
     "table" field as the table and the "rest" field
     as an addition to the normal insert clause.
@@ -70,7 +70,7 @@ def insert(data: dict, rest: str="") -> bool:
             "uid": new_uid(25),
             "asst_text": "a second picture!",
             "pict": get_picture("example.png")
-        })'''
+        })"""
     try:
         table, cols, vals = value_tuples(data)
         query = f"INSERT INTO {table} {tuple_to_no_quote_str(cols)} VALUES ({sput(vals)})"
