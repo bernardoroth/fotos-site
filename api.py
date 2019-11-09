@@ -21,28 +21,16 @@ def hash_string(string):
     return string
 
 def latest_idn() -> int:
-    c.execute("SELECT curnum FROM id_origins ORDER BY curnum DESC")
+    c.execute("SELECT curnum FROM base.id_origins ORDER BY curnum DESC")
     last_num = c.fetchone()[0]
     new_num = last_num + randint(1, 20)
     return new_num
 
 def new_uid(limit: int) -> str:
     new_num = latest_idn()
-    c.execute("INSERT INTO id_origins (curnum) VALUES %s", (new_num,))
+    c.execute("INSERT INTO base.id_origins (curnum) VALUES (%s)", (new_num,))
     hashed = hash_string(str(new_num))
-
-def create_user(username: str, email: str, password: str) -> bool:
-    uid = ""
-    try:
-        return insert({
-            "uid": new_uid(),
-            "username": username,
-            "email": email,
-            "password": hash_password(password)
-        })
-    except:
-        print_exc();
-        return False
+    return hashed[:limit]
 
 def sput(items: tuple) -> str:
     ''' Function that accepts a tuple and
@@ -64,18 +52,32 @@ def value_tuples(data: dict) -> tuple:
         vals.append(cv[1])
     return table, tuple(cols), tuple(vals)
 
+def get_picture(path):
+    with open(path, 'rb') as pict:
+        return pict.read()
+
+def tuple_to_no_quote_str(tup: tuple) -> str:
+     return str(tup).replace("'", "")
+
 def insert(data: dict, rest: str="") -> bool:
-    '''Functon that accepts a data dictionary and
+    '''Function that accepts a data dictionary and
     inserts the values into a database, using the
     "table" field as the table and the "rest" field
-    as an addition to the normal insert clause. '''
+    as an addition to the normal insert clause.
+    Example use:
+        insert({
+            "table": "tablename",
+            "uid": new_uid(25),
+            "asst_text": "a second picture!",
+            "pict": get_picture("example.png")
+        })'''
     try:
         table, cols, vals = value_tuples(data)
-        query = f"INSERT INTO %s ({sput(cols)}) VALUES ({sput(vals)})"
-        values = (table,) + cols + vals
+        query = f"INSERT INTO {table} {tuple_to_no_quote_str(cols)} VALUES ({sput(vals)})"
         if rest != "":
             query += " " + rest
-        cur.execute(query, values)
+        print(cols, vals[:-1])
+        c.execute(query, vals)
         conn.commit()
         return True
     except:
