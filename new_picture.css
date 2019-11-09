@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lucida Sans Unicode', sans-serif;
+    color: #f1f1f1;
+}
+
+body {
+    background-color: #4f749b;
+    margin: 0; padding: 0;
+}
+
+header {
+    top: 0; left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #405772;
+}
+
+main {
+    padding: 15px;
+    display: flex; display: -ms-flexbox; display: -webkit-flex;
+    flex-direction: column; -ms-flex-direction: column;
+}
+
+h2 {
+    margin: 0; padding: 0;
+}
+
+/* Small box to hold each input */
+form {
+    margin: 15px;
+    border: 1px solid #637488;
+    width: calc(100ch + 20px);
+    height: 200px;
+    display: flex; display: -ms-flexbox; display: -webkit-flex;
+    flex-direction: column; -ms-flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 10px;
+    background-color: #c2dffd;
+}
+
+/* Global styling for form elements */
+input, label, button {
+    font-size: 12pt;
+    padding: 5px;
+    background-color: #eef6ff;
+    color: #585858;
+    border: 0;
+}
+
+/* Up the contrast when hovering over a form input element */
+input[type=text]:hover, label[for=file]:hover, button:hover {
+    filter: contrast(120%);
+}
+
+input[type=text] {
+    width: 100ch;
+}
+
+/* Hide the file input */
+input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* File input box styling */
+label[for=file] {
+    transition: filter 0.2s;
+}
+
+/* Set cursor to pointer when hovering over the file input box or the submit button */
+label[for=file]:hover, button:hover {
+    cursor: pointer;
+}
+
+button {
+    margin-top: auto;
+}
+
+/* Separator */
+.separator {
+    height: 10px;
+}

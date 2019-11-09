@@ -5,28 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nova foto</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Lucida Sans Unicode', sans-serif;
-        }
-        input[type=text] {
-            padding: 5px;
-            width: 400px;
-        }
-        .separator {
-            height: 5px;
-        }
-    </style>
-
+    <link rel="stylesheet" href="./new_picture.css">
 </head>
 <body>
-    <h2>Adicionar nova foto</h2>
-    <form action="./api/new_picture" method="post" enctype="multipart/form-data">
-        <input type="text" name="asst_text" placeholder="Texto para a imagem (opcional)">
-        <br><div class="separator"></div>
-        <input type="file" name="pict">
-    </form>
+    <header>
+        <h2>Adicionar novas fotos</h2>
+    </header>
+    <main>
+        <form action="./api/new_picture" method="post" enctype="multipart/form-data">
+            <input type="text" name="asst_text" placeholder="Texto para a imagem (opcional)">
+            <div class="separator"></div>
+            <input type="file" id="file" name="pict">
+            <label for="file">Escolha um arquivo</label>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="last"></div>
+    </main>
 </body>
+
+<script src="new_picture.js"></script>
+
 </html>
