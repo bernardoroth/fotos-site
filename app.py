@@ -18,6 +18,18 @@ def nopage(): return redirect(url_for('home', page=1))
 def home(page):
     pass
 
+@app.route('/new', methods=['GET'])
+def new_picture():
+    return render_template('new_picture.html')
+
+@app.route('/api/new_picture', methods=['POST'])
+def api_new_picture():
+    print(request.form)
+    print(request.files)
+    return jsonify(
+        "hello"
+    )
+
 if __name__ == "__main__":
     app.run(
         host="localhost",
