@@ -10,6 +10,7 @@
 <body>
     <header>
         <h2>Adicionar novas fotos</h2>
+        <button type="submit">Enviar</button>
     </header>
     <main>
         <form action="./api/new_picture" method="post" enctype="multipart/form-data">
@@ -17,9 +18,11 @@
             <div class="separator"></div>
             <input type="file" id="file" name="pict">
             <label for="file">Escolha um arquivo</label>
-            <button type="submit">Enviar</button>
         </form>
-        <div id="last"></div>
+        <button id="new-image">
+            <span>+</span>
+            <!-- <img src="new_picture_form.png" alt="+"> -->
+        </button>
     </main>
 </body>
 

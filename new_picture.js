@@ -1,20 +1,14 @@
-var inputs = document.querySelectorAll( 'input[type=file]' );
-Array.prototype.forEach.call( inputs, function( input )
-{
-	var label	 = input.nextElementSibling,
-		labelVal = label.innerHTML;
-
-	input.addEventListener( 'change', function( e )
-	{
-		var fileName = '';
-		if( this.files && this.files.length > 1 )
-			fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-		else
-			fileName = e.target.value.split( '\\' ).pop();
-
-		if( fileName )
-			label.querySelector( 'label[for=file]' ).innerHTML = fileName;
-		else
-			label.innerHTML = labelVal;
-	});
+let fileInput = document.querySelector('input[type=file]');
+let fileLabel = document.querySelector('label[for=file]');
+fileInput.addEventListener('change', (e) => {
+	let filename = fileInput.files[0].name;
+	fileLabel.innerHTML = filename;
 });
+
+let formContainer = document.querySelector('main');
+let newImageBtn = document.querySelector('button[id=new-image]');
+newImageBtn.addEventListener('click', (e) => {
+	let formItem = document.querySelectorAll('form')[0].cloneNode(true);
+	formContainer.appendChild(formItem);
+	formContainer.appendChild(newImageBtn);
+})
