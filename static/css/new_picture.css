@@ -29,7 +29,9 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    width: 100%;
     margin: 0; padding: 0;
+    text-align: center;
 }
 
 /* Small box to hold each input */
@@ -55,7 +57,8 @@ input, label, button {
 }
 
 /* Up the contrast when hovering over a form input element */
-input[type=text]:hover, label[for=file]:hover, button:hover {
+input[type=text]:hover, label[for=file]:hover, button:hover,
+input[type=text]:active, label[for=file]:active, button:active {
     filter: contrast(120%);
 }
 
