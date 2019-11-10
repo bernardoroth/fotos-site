@@ -85,16 +85,6 @@ label[for=file]:hover, button:hover {
     cursor: pointer;
 }
 
-button[id=new-image] {
-    width: 40px; height: 40px;
-    padding: 0;
-}
-
-button[id=new-image] span {
-    font-size: 20pt;
-    text-align: center;
-}
-
 button[type=submit] {
     margin-top: auto;
 }

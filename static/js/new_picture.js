@@ -1,3 +1,4 @@
+console.log(`hELLO`);
 let fileInput = document.querySelector('input[type=file]');
 let fileLabel = document.querySelector('label[for=file]');
 fileInput.addEventListener('change', (e) => {
