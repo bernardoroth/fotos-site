@@ -14,10 +14,14 @@
     <main>
         <form action="./api/new_picture" method="post" enctype="multipart/form-data">
             <input type="text" name="asst_text" placeholder="Texto para a imagem (opcional)">
-            <div class="separator"></div>
+            <div class="hseparator"></div>
             <input type="file" id="file" name="pict">
             <label for="file">Escolha um arquivo</label>
-            <button type="submit">Enviar</button>
+            <footer>
+                <button type="submit">Enviar</button>
+                <div class="vseparator"></div>
+                <button type="reset">Limpar</button>
+            </footer>
         </form>
     </main>
 </body>

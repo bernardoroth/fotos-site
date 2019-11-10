@@ -85,11 +85,16 @@ label[for=file]:hover, button:hover {
     cursor: pointer;
 }
 
-button[type=submit] {
+footer {
     margin-top: auto;
 }
 
 /* Separator */
-.separator {
+.hseparator {
     height: 10px;
+}
+
+.vseparator {
+    display: inline-block;
+    width: 10px;
 }

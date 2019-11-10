@@ -2,8 +2,6 @@ from flask import Flask, request, redirect, make_response, render_template, url_
 import api
 
 app = Flask(__name__)
-app.config['ENV'] = 'development'
-app.config['DEBUG'] = True
 
 UNPROC_ENTITY = 422
 SERVER = 500

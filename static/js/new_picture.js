@@ -1,7 +1,13 @@
-let fileInput = document.querySelector('input[type=file]');
-let fileLabel = document.querySelector('label[for=file]');
-fileInput.addEventListener('change', (e) => {
-	let filename = fileInput.files[0].name;
-	fileLabel.innerHTML = filename;
+let formArea = document.querySelector('form');
+let fileInputFunc = document.querySelector('input[type=file]');
+let fileInputLabl = document.querySelector('label[for=file]');
+let resetButton = document.querySelector('button[type=reset]');
+
+fileInputFunc.addEventListener('change', e => {
+	let filename = fileInputFunc.files[0].name;
+	fileInputLabl.innerHTML = filename;
 });
-console.log(`Hello`);
+
+resetButton.addEventListener('click', e => {
+	fileInputLabl.innerHTML = "Escolha um arquivo";
+});
