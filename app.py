@@ -2,6 +2,8 @@ from flask import Flask, request, redirect, make_response, render_template, url_
 import api
 
 app = Flask(__name__)
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
 
 UNPROC_ENTITY = 422
 SERVER = 500
@@ -30,7 +32,7 @@ def api_new_picture():
 
 if __name__ == "__main__":
     app.run(
-        host="localhost",
-        port=8000,
-        debug=True
+        host='localhost',
+        debug=True,
+        port=8000
     )
