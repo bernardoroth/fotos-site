@@ -96,8 +96,7 @@ button[id=new-image] span {
 }
 
 button[type=submit] {
-    font-weight: 600;
-    background-color: #5c8fca;
+    margin-top: auto;
 }
 
 /* Separator */

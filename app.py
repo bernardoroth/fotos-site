@@ -26,9 +26,7 @@ def new_picture():
 def api_new_picture():
     print(request.form)
     print(request.files)
-    return jsonify(
-        "hello"
-    )
+    return "", 204
 
 if __name__ == "__main__":
     app.run(
