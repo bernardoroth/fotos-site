@@ -85,7 +85,7 @@ label[for=file]:hover, button:hover {
     cursor: pointer;
 }
 
-footer {
+button[type=submit] {
     margin-top: auto;
 }
 
