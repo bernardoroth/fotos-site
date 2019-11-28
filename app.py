@@ -8,15 +8,9 @@ SERVER = 500
 NOT_FOUND = 404
 FORBIDDEN = 500
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def root():
-    return jsonify("root")
-
-@app.route('/fotos')
-def nopage(): return redirect(url_for('home', page=1))
-@app.route('/fotos/page')
-def home(page):
-    pass
+    return render_template('index.html')
 
 @app.route('/new', methods=['GET'])
 def new_picture():
