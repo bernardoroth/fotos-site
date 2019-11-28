@@ -8,8 +8,8 @@
     }
 }
 
-body {
-    overflow-x: none;
+* {
+    overflow-x: hidden;
 }
 
 .page {

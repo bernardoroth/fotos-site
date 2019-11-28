@@ -10,8 +10,14 @@
     {% endblock links %}
 </head>
 <body>
-    {% block body %}
-    {% endblock body %}
+    <div class="content">
+        <button class="prv"></button>
+        <div>
+            {% block body %}
+            {% endblock body %}
+        </div>
+        <button class="nxt"></button>
+    </div>
     {% block scripts %}
     {% endblock scripts %}
 </body>
