@@ -10,11 +10,11 @@ FORBIDDEN = 500
 
 @app.route('/', methods=['GET'])
 def root():
-    return render_template('index.html')
+    return render_template('index.html', title="Index")
 
 @app.route('/new', methods=['GET'])
 def new_picture():
-    return render_template('new_picture.html')
+    return render_template('new_picture.html', title="Nova foto")
 
 @app.route('/api/new_picture', methods=['POST'])
 def api_new_picture():

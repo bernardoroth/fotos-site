@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nova foto</title>
+{% extends 'master.html' %}
+{% block links %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/new_picture.css') }}">
-</head>
-<body>
+{% endblock links %}
+{% block body %}
     <header>
         <h1>Adicionar nova foto</h1>
     </header>
     <main>
-        <form action="./api/new_picture" method="post" enctype="multipart/form-data">
+        <form class="page" action="./api/new_picture" method="post" enctype="multipart/form-data">
             <input type="text" name="asst_text" placeholder="Texto para a imagem (opcional)">
             <div class="hseparator"></div>
             <input type="file" id="file" name="pict">
@@ -20,8 +15,8 @@
             <button type="submit">Enviar</button>
         </form>
     </main>
-</body>
+{% endblock body %}
 
-<script src="{{ url_for('static', filename='js/new_picture.js') }}"></script>
-
-</html>
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/new_picture.js') }}"></script>
+{% endblock scripts %}

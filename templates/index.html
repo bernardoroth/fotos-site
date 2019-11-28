@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anuário</title>
+{% extends 'master.html' %}
+{% block links %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-</head>
-<body>
-    <div id="book">
-        <canvas id="pageflip-canvas"></canvas>
-        <div id="pages">
-            <section>
-                <div>
-                    <!-- Any type of contents here -->
-                </div>
-            </section>
-            <!-- More <section>'s here -->
-        </div>
-    </div>
+{% endblock links %}
+{% block body %}
+    <main>
+        <section class="page">
+            <h1><a href="/new">Hello!</a></h1>
+        </section>
+    </main>
+{% endblock body %}
+
+{% block scripts %}
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-</body>
-</html>
+{% endblock scripts %}
