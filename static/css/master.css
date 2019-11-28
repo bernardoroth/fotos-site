@@ -1,3 +1,9 @@
+:root {
+    --jp-dark: #04456B;
+    --jp-nrml: #004D83;
+    --jp-lght: #0863a0;
+}
+
 @keyframes transitionIn {
     from {
         transform: translateX(100%);
@@ -9,9 +15,39 @@
 }
 
 * {
-    overflow-x: hidden;
+    overflow: hidden;
+    color: #f8f8f8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0; padding: 0;
 }
 
 .page {
     animation: transitionIn 0.75s;
+}
+
+.content {
+    display: flex; display: -ms-flexbox; display: -webkit-flex;
+    height: 100%;
+    width: 100%;
+    flex-flow: row wrap;
+    background-color: var(--jp-dark);
+}
+
+.content button {
+    flex: 1 0 0;
+}
+
+.content-body {
+    flex: 96% 0 0;
+}
+
+.pageflip {
+    border: 0;
+    background-color: var(--jp-nrml);
 }

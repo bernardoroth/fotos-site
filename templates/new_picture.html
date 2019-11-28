@@ -2,10 +2,12 @@
 {% block links %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/new_picture.css') }}">
 {% endblock links %}
-{% block body %}
+{% block header %}
     <header>
         <h1>Adicionar nova foto</h1>
     </header>
+{% endblock header %}
+{% block body %}
     <main>
         <form class="page" action="./api/new_picture" method="post" enctype="multipart/form-data">
             <input type="text" name="asst_text" placeholder="Texto para a imagem (opcional)">

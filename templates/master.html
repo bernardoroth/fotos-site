@@ -11,12 +11,20 @@
 </head>
 <body>
     <div class="content">
-        <button class="prv"></button>
-        <div>
+        <button class="pageflip"></button>
+        <div class="content-body">
+            <header>
+                {% block header %}
+                {% endblock header %}
+            </header>
             {% block body %}
             {% endblock body %}
+            <footer>
+                {% block footer %}
+                {% endblock footer %}
+            </footer>
         </div>
-        <button class="nxt"></button>
+        <button class="pageflip"></button>
     </div>
     {% block scripts %}
     {% endblock scripts %}

@@ -2,6 +2,18 @@
     box-sizing: border-box;
 }
 
-body {
-    padding: 20px;
+header {
+    background-color: var(--jp-lght);
+}
+
+h1 {
+    text-align: center;
+    margin: 1%;
+}
+
+main {
+    padding: 5%;
+    display: flex; display: -ms-flexbox; display: -webkit-flex;
+    flex-flow: column nowrap;
+    align-items: center;
 }
