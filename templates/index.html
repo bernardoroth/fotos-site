@@ -7,7 +7,10 @@
 {% endblock header %}
 {% block body %}
     <main>
-        <span>0</span>
+        <div class="wrapper">
+            <img src="{{ url_for('static', filename='8x10pict.jpg') }}" alt="IMAGE">
+            <p>sometext</p>
+        </div>
     </main>
 {% endblock body %}
 
